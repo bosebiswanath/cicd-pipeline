@@ -9,11 +9,10 @@ app.get("/", (req, res) =>{
     })
 })
 
-
 app.get("/product", (req, res) =>{
     res.json({
         status: 200,
-        message: "Hello World products"
+        message: "Hello World products pppppp"
     })
 })
 
