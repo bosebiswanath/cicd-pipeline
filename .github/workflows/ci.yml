@@ -17,6 +17,6 @@ jobs:
         run: echo "$DOCKER_PASSWORD" | docker login -u $DOCKER_USERNAME --password-stdin
 
       - name: Build the Docker image
-        run: docker build -t cicd-pipeline . docker tag pipeline bosebiswanath/pipeline
+        run: docker build -t cicd-pipeline . Dockerfile --tag bosebiswanath/cicd-pipeline:latest
       - name: Push to Docker hub
         run: docker push bosebiswanath/cicd-pipeline:latest
