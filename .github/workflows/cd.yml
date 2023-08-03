@@ -14,17 +14,6 @@ jobs:
       - name: Pull Docker Image
         run: sudo docker pull bosebiswanath/cicd-pipeline:latest
       - name: Delete Old Docker Container
-        run: sudo docker rm -f cicd-pipeline-container || true     
+        run: sudo docker rm -f cicd-pipeline-container || true
       - name: Run Docker Container
-        run: sudo docker run -d -p 8080:8080 --name cicd-pipeline-container
-        env:
-          DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
-          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-        run: echo "$DOCKER_PASSWORD" | docker login -u $DOCKER_USERNAME --password-stdin
-
-      - name: Build the Docker image
-        run: docker build -t cicd-pipeline .
-      - name: Docker Tag
-        run: docker tag cicd-pipeline bosebiswanath/cicd-pipeline
-      - name: Push to Docker hub
-        run: docker push bosebiswanath/cicd-pipeline:latest
+        run: sudo docker run -d -p 8080:8080 --name cicd-pipeline-container bosebiswanath/cicd-pipeline
